@@ -131,7 +131,7 @@ void MainWindow::on_action_Save_triggered()  //保存
     file.close();
 
     this->setWindowTitle(QFileInfo(filepath).absoluteFilePath());
-    textchanged=false;pp
+    textchanged=false;
 }
 
 void MainWindow::on_action_Othersave_triggered() //另存为
