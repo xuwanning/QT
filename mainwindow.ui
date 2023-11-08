@@ -89,7 +89,8 @@
     <property name="title">
      <string>帮助(&amp;H)</string>
     </property>
-    <addaction name="action-about"/>
+    <addaction name="separator"/>
+    <addaction name="action_about"/>
    </widget>
    <addaction name="menu_F"/>
    <addaction name="menu_E"/>
@@ -130,7 +131,7 @@
    <addaction name="action_tools"/>
    <addaction name="action_state"/>
    <addaction name="separator"/>
-   <addaction name="action-about"/>
+   <addaction name="action_about"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -183,7 +184,7 @@
      <normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</iconset>
    </property>
    <property name="text">
-    <string>另存为(A)</string>
+    <string>另存为(&amp;A)</string>
    </property>
    <property name="toolTip">
     <string>另存为</string>
@@ -417,7 +418,7 @@
     <string>字体背景色</string>
    </property>
   </action>
-  <action name="action-about">
+  <action name="action_about">
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</iconset>

@@ -26,13 +26,22 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    aboutdialog.cpp \
+    aboutwithoutbuttondialog.cpp \
+    replacedialog.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    aboutdialog.h \
+    aboutwithoutbuttondialog.h \
+    replacedialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    aboutdialog.ui \
+    aboutwithoutbuttondialog.ui \
+    replacedialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
