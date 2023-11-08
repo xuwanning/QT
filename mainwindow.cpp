@@ -6,6 +6,9 @@
 #include "QFileDialog"
 #include "QTextStream"
 #include "QMessageBox"
+#include "QColor"
+#include "QColorDialog"
+#include "QFontDialog"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -33,6 +36,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->action_revoke->setEnabled(false);
     ui->action_restore->setEnabled(false);
 
+    QPlainTextEdit::LineWrapMode mode=ui->textEdit->lineWrapMode();
+
+    if(mode==QTextEdit::NoWrap)
+    {
+        ui->textEdit->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+        ui->action_linefeed->setChecked(false);
+    }
+    else
+    {
+        ui->textEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
+        ui->action_linefeed->setChecked(true);
+    }
+
+    ui->action_state->setChecked(true);
+    ui->action_tools->setChecked(true);
 }
 
 MainWindow::~MainWindow()
@@ -48,7 +66,7 @@ void MainWindow::on_action_about_triggered()
 
 void MainWindow::on_action_find_triggered()
 {
-    aboutwithoutbuttonDialog dlg;
+    aboutwithoutbuttonDialog dlg(this,ui->textEdit);
     dlg.exec();
 }
 
@@ -221,6 +239,11 @@ void MainWindow::on_action_restore_triggered() //撤销
     ui->textEdit->undo();
 }
 
+void MainWindow::on_action_Allchoose_triggered()
+{
+    ui->textEdit->selectAll();
+}
+
 void MainWindow::on_textEdit_undoAvailable(bool b)
 {
     ui->action_restore->setEnabled(b);
@@ -235,4 +258,76 @@ void MainWindow::on_textEdit_copyAvailable(bool b)
 void MainWindow::on_textEdit_redoAvailable(bool b)
 {
     ui->action_revoke->setEnabled(b);
+}
+
+void MainWindow::on_action_color_triggered()
+{
+    QColor color=QColorDialog::getColor(Qt::black,this,"选择颜色");
+    if(color.isValid())
+    {
+        ui->textEdit->setStyleSheet(QString("QPlainTextEdit {color:%1}").arg(color.name()));
+    }
+}
+
+void MainWindow::on_action_backgroundcolor_triggered()
+{
+    QColor color=QColorDialog::getColor(Qt::black,this,"选择颜色");
+    if(color.isValid())
+    {
+        ui->textEdit->setStyleSheet(QString("QPlainTextEdit {background-color:%1}").arg(color.name()));
+    }
+}
+
+void MainWindow::on_action_frontbackcolor_triggered()
+{
+
+}
+
+void MainWindow::on_action_linefeed_triggered()
+{
+    QPlainTextEdit::LineWrapMode mode=ui->textEdit->lineWrapMode();
+
+    if(mode==QTextEdit::NoWrap)
+    {
+        ui->textEdit->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+        ui->action_linefeed->setChecked(true);
+    }
+    else
+    {
+        ui->textEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
+        ui->action_linefeed->setChecked(false);
+    }
+}
+
+void MainWindow::on_action_fornt_triggered()
+{
+    bool ok =false;
+    QFont font=QFontDialog::getFont(&ok,this);
+
+    if(ok)
+    {
+        ui->textEdit->setFont(font);
+    }
+}
+
+void MainWindow::on_action_tools_triggered()
+{
+    bool visible =ui->mainToolBar->isVisible();
+    ui->mainToolBar->setVisible(!visible);
+    ui->action_tools->setChecked(!visible);
+}
+
+void MainWindow::on_action_state_triggered()
+{
+    bool visible =ui->statusBar->isVisible();
+    ui->statusBar->setVisible(!visible);
+    ui->action_state->setChecked(!visible);
+}
+
+void MainWindow::on_action_Exit_triggered()
+{
+    if(userEditConfirmed())
+    {
+        exit(0);
+    }
 }

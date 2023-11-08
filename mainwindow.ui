@@ -41,7 +41,7 @@
      <x>0</x>
      <y>0</y>
      <width>1204</width>
-     <height>25</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_F">
@@ -75,7 +75,7 @@
     <addaction name="action_line"/>
     <addaction name="action_fornt"/>
     <addaction name="action_color"/>
-    <addaction name="action-frontbackcolor"/>
+    <addaction name="action_frontbackcolor"/>
     <addaction name="action_backgroundcolor"/>
    </widget>
    <widget class="QMenu" name="menu_V">
@@ -126,7 +126,7 @@
    <addaction name="action_color"/>
    <addaction name="action_fornt"/>
    <addaction name="action_backgroundcolor"/>
-   <addaction name="action-frontbackcolor"/>
+   <addaction name="action_frontbackcolor"/>
    <addaction name="separator"/>
    <addaction name="action_tools"/>
    <addaction name="action_state"/>
@@ -371,6 +371,9 @@
    </property>
   </action>
   <action name="action_tools">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</iconset>
@@ -383,6 +386,9 @@
    </property>
   </action>
   <action name="action_state">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</iconset>
@@ -395,6 +401,9 @@
    </property>
   </action>
   <action name="action_linefeed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</iconset>
@@ -406,7 +415,7 @@
     <string>自动换行</string>
    </property>
   </action>
-  <action name="action-frontbackcolor">
+  <action name="action_frontbackcolor">
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/search_FILL0_wght400_GRAD0_opsz24.png</iconset>

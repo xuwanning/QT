@@ -49,6 +49,24 @@ private slots:
 
     void on_textEdit_redoAvailable(bool b);
 
+    void on_action_color_triggered();
+
+    void on_action_backgroundcolor_triggered();
+
+    void on_action_frontbackcolor_triggered();
+
+    void on_action_linefeed_triggered();
+
+    void on_action_fornt_triggered();
+
+    void on_action_tools_triggered();
+
+    void on_action_state_triggered();
+
+    void on_action_Allchoose_triggered();
+
+    void on_action_Exit_triggered();
+
 private:
     Ui::MainWindow *ui;
 
