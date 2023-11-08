@@ -27,6 +27,12 @@ MainWindow::MainWindow(QWidget *parent) :
     author->setText(tr("孙家兴"));
     ui->statusBar->addPermanentWidget(author);
 
+    ui->action_copy->setEnabled(false);
+    ui->action_cut->setEnabled(false);
+    ui->action_paste->setEnabled(false);
+    ui->action_revoke->setEnabled(false);
+    ui->action_restore->setEnabled(false);
+
 }
 
 MainWindow::~MainWindow()
@@ -185,4 +191,48 @@ bool MainWindow::userEditConfirmed()
         }
     }
     return true;
+}
+// 复制 剪切+
+
+void MainWindow::on_action_revoke_triggered()  //恢复
+{
+    ui->textEdit->redo();
+}
+
+void MainWindow::on_action_cut_triggered()
+{
+    ui->textEdit->cut();
+    ui->action_paste->setEnabled(true);
+}
+
+void MainWindow::on_action_copy_triggered()
+{
+    ui->textEdit->copy();
+    ui->action_paste->setEnabled(true);
+}
+
+void MainWindow::on_action_paste_triggered()
+{
+    ui->textEdit->paste();
+}
+
+void MainWindow::on_action_restore_triggered() //撤销
+{
+    ui->textEdit->undo();
+}
+
+void MainWindow::on_textEdit_undoAvailable(bool b)
+{
+    ui->action_restore->setEnabled(b);
+}
+
+void MainWindow::on_textEdit_copyAvailable(bool b)
+{
+    ui->action_copy->setEnabled(b);
+    ui->action_cut->setEnabled(b);
+}
+
+void MainWindow::on_textEdit_redoAvailable(bool b)
+{
+    ui->action_revoke->setEnabled(b);
 }
